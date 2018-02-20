@@ -16,18 +16,20 @@
 
 <body>
 
-    <h1>Hello World</h1>
+    <h1>Star Wars RPG Game</h1>
 
     <div class="container">
+        <h2>Choose Your Character</h2>
         <div class="row">
 
             <div class="col-3">
                 <div class="card obi-wan" style="width: 14rem;">
-                    <img class="card-img-top" src="assets/images/obi-wan-kenobi.png" alt="Obi Wan Image">
+                    <h5 class="card-title">Obi Wan Kenobi</h5>
+                    <img class="card-img-top image" src="assets/images/obi-wan-kenobi.png" alt="Obi Wan Image">
                     <div class="card-body">
-                        <h5 class="card-title">Obi Wan Kenobi</h5>
-                        <a href="#" class="btn btn-primary normal-button">Attack</a>
-                        <p class="obi-wan-health"> health: 125 </p>
+
+                        <a href="#" class="btn btn-primary attack-button">Attack</a>
+                        <p class="health obi-wan-health"> health: 125 </p>
                     </div>
                 </div>
             </div>
@@ -36,18 +38,45 @@
             <div class="col-3">
 
                 <div class="card anakin" style="width: 14rem;">
-                    <img class="card-img-top" src="assets/images/anakin.png" alt="Anakin Image">
+                    <h5 class="card-title">Anakin Skywalker</h5>
+                    <img class="card-img-top image" src="assets/images/anakin.jpeg" alt="Anakin Image">
                     <div class="card-body">
-                        <h5 class="card-title">Anakin Skywalker</h5>
-                        <a href="#" class="btn btn-primary normal-button">Attack</a>
-                        <p class="anakin-health"> health: 100 </p>
+
+                        <a href="#" class="btn btn-primary attack-button">Attack</a>
+                        <p class="health anakin-health"> health: 100 </p>
                     </div>
                 </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6 your-character">
+                <h2>Your Character</h2>
+
+            </div>
+            <div class="col-6 defender">
+                <h2>Defender</h2>
+
             </div>
 
 
 
+
         </div>
+
+    </div>
+
+    <div class="container">
+        <h2>Enemies Remaining</h2>
+    </div>
+
+    <div class="btn btn-primary restart-button">
+        <h2>Play Agin</h2>
     </div>
 
 
