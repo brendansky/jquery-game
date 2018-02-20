@@ -1,20 +1,19 @@
 $(document).ready(function () {
 
 
-
     function game() {
-        
+
         var characterChosen = false
 
         var anakin = {
-    
+
             card: $(".anakin"),
             health: 100,
             attack: 25,
         };
-    
+
         var obiWan = {
-    
+
             card: $(".obi-wan"),
             health: 125,
             attack: 20,
@@ -22,9 +21,14 @@ $(document).ready(function () {
 
 
         $(".obi-wan").on("click", ".image", function () {
-            $(".your-character").append(obiWan.card);
-            $(".defender").append(anakin.card);
-            characterChosen = true
+            if (characterChosen === false) {
+
+                $(".your-character").append(obiWan.card);
+                $(".defender").append(anakin.card);
+                characterChosen = true
+            }
+
+
             $(".obi-wan").on("click", ".attack-button", function () {
                 anakin.health -= obiWan.attack
                 $(".anakin-health").text("health: " + anakin.health);
@@ -42,12 +46,16 @@ $(document).ready(function () {
         });
 
         $(".anakin").on("click", ".image", function () {
-            $(".your-character").append(anakin.card);
-            $(".defender").append(obiWan.card);
-            characterChosen = true
+            if (characterChosen === false) {
+                $(".your-character").append(anakin.card);
+                $(".defender").append(obiWan.card);
+                characterChosen = true
+            }
+
             $(".obi-wan").on("click", ".attack-button", function () {
                 anakin.health -= obiWan.attack
                 $(".anakin-health").text("health: " + anakin.health);
+
 
 
             });
@@ -65,11 +73,6 @@ $(document).ready(function () {
 
     game();
 
-    $(document).on("click", ".restart-button", function () {
-
-        game ();
-
-    });
 
 
 
