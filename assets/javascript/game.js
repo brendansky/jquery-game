@@ -24,7 +24,7 @@ $(document).ready(function () {
             if (characterChosen === false) {
 
                 $(".your-character").append(obiWan.card);
-                $(".defender").append(anakin.card);
+                $(".enemies-remaining").append(anakin.card);
                 characterChosen = true
             }
 
@@ -52,7 +52,7 @@ $(document).ready(function () {
         $(".anakin").on("click", ".image", function () {
             if (characterChosen === false) {
                 $(".your-character").append(anakin.card);
-                $(".defender").append(obiWan.card);
+                $(".enemies-remaining").append(obiWan.card);
                 characterChosen = true;
             }
 
