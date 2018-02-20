@@ -56,8 +56,6 @@ $(document).ready(function () {
                 anakin.health -= obiWan.attack
                 $(".anakin-health").text("health: " + anakin.health);
 
-
-
             });
 
             $(".anakin").on("click", ".attack-button", function () {
