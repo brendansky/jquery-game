@@ -2,20 +2,3 @@
     border: solid 1px black;
     padding: 20px;
 }
-
-.card{
-    height: 400px;
-    width: 300px;
-    overflow: hidden;
-
-}
-.card-img-top{
-    height: 300px;
-    max-width: 290px;
-    overflow: hidden;
-     
-}
-
-.health{
-    color: green;
-}
