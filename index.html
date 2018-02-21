@@ -16,19 +16,105 @@
 
     <h1>Star Wars RPG Game</h1>
 
-    <div class="jumbotron">
-        <h2 class="display-4">Choose a Character</h2>
-        <img src="assets/images/anakin.jpg">
-        <img src="assets/images/dooku.jpg">
-        <img src="assets/images/mace-windu.jpg">
-        <img src="assets/images/obi-wan.jpg">
-        <img src="assets/images/palpatine.png">
-        <img src="assets/images/yoda.jpg">
+    <div class="container">
+
+        <div class="jumbotron jumbotron-fluid character-selection">
+            <h2 class="display-4">Choose a Character</h2>
+            <div class="row">
+
+                <div class="col-2">
+                    <div class="card obi-wan" style="width: 10rem; height: 12rem;">
+                        <h5 class="card-title">Obi Wan Kenobi</h5>
+                        <img class="card-img-top image" src="assets/images/obi-wan.jpg" alt="Obi Wan Image">
+                        <div class="card-body">
+                            <p class="card-text"> Health: </p>
+            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="card mace-windu" style="width: 10rem; height: 12rem;">
+                        <h5 class="card-title">Mace Windu</h5>
+                        <img class="card-img-top image" src="assets/images/mace-windu.jpg" alt="Obi Wan Image">
+                        <div class="card-body">
+                            <p class="card-text"> Health: </p>
+                    
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="card" style="width: 10rem; height: 12rem;">
+                        <h5 class="card-title">Yoda</h5>
+                        <img class="card-img-top" src="assets/images/yoda.jpg" alt="Obi Wan Image">
+                        <div class="card-body">
+                            <p class="card-text"> Health: </p>
+                      
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="card" style="width: 10rem; height: 12rem;">
+                        <h5 class="card-title">Palpatine</h5>
+                        <img class="card-img-top" src="assets/images/palpatine.png" alt="Obi Wan Image">
+                        <div class="card-body">
+                            <p class="card-text"> Health: </p>
+                       
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="card" style="width: 10rem; height: 12rem;">
+                        <h5 class="card-title">Count Dooku</h5>
+                        <img class="card-img-top" src="assets/images/dooku.jpg" alt="Obi Wan Image">
+                        <div class="card-body">
+                            <p class="card-text"> Health: </p>
+                        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="card" style="width: 10rem; height: 12rem;">
+                        <h5 class="card-title">Anakin Skywalker</h5>
+                        <img class="card-img-top" src="assets/images/anakin.jpg" alt="Obi Wan Image">
+                        <div class="card-body">
+                            <p class="card-text"> Health: </p>
+                      
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="jumbotron jumbotron-fluid character-lobby hidden">
+            <div class="row your-character">
+                <h2 class="display-4">Your Character</h2>
+                <br>
+
+            </div>
+
+            <div class="row enemies-remaining">
+                <h2 class="display-4">Enemies</h2>
+            </div>
+
+
+
+        </div>
+
+
     </div>
+
+
 
 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="assets/javascript/game.js"></script>
+
 </body>
 
 </html>
