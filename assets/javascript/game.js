@@ -2,7 +2,7 @@ $(document).ready(function () {
 
 
     var characters = {
-        obiWan: { "name": "obi wan kenobi", "health": 125, "attack": 20, "card": $(".obi-wan") },
+        obiWan: { "name": "obi wan kenobi", "health": 125, "attack": 20, "card": $(".obi-wan"), "image": "obi-wan.jpg" },
         maceWindu: { "name": "mace windu", "health": 125, "attack": 20, "card": $(".mace-windu") },
         yoda: { "name": "yoda", "health": 125, "attack": 20 },
         palpatine: { "name": "palpatine", "health": 125, "attack": 20 },
@@ -13,11 +13,22 @@ $(document).ready(function () {
 
     var characterChosen = false
 
+    var characterButton = $("<div>")
+
+
+
 
     $.each(characters, function () {
         $.each(this, function (key, value) {
             console.log(key + ": " + value)
         });
+
+        var characterButton = $("<div>");
+        characterButton.addClass("card");
+        characterButton.text(this.name);
+        $(".character-selection").append(characterButton);
+
+
     });
 
     $(".obi-wan").on("click", ".image", function () {
