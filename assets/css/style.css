@@ -7,6 +7,19 @@ body{
     padding: 20px;
 }
 
+.card{
+    border: solid 2px purple;
+    font-size: 24px;
+    margin: 20px;
+    height: 12rem;
+    width: 18rem;
+}
+.image{
+    max-height: 17rem;
+    max-width: 26rem;
+    overflow: hidden;
+}
+
 .hidden{
     display: none;
 }
