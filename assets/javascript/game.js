@@ -1,65 +1,89 @@
 $(document).ready(function () {
 
 
-    var characters = {
-        obiWan: { "name": "Obi Wan Kenobi", "health": 125, "attack": 20, "image": "obi-wan.jpg", "class": "obi-wan" },
-        maceWindu: { "name": "Mace Windu", "health": 125, "attack": 20, "image": "mace-windu.jpg" },
-        yoda: { "name": "Yoda", "health": 125, "attack": 20, "image": "yoda.jpg" },
-        palpatine: { "name": "Palpatine", "health": 125, "attack": 20, "image": "palpatine.png" },
-        dooku: { "name": "Dooku", "health": 125, "attack": 20, "image": "dooku.jpg" },
-        anakin: { "name": "Anakin", "health": 125, "attack": 20, "image": "anakin.jpg" },
+    var obiWan = {
+        "name": "Obi Wan Kenobi",
+        "health": 125,
+        "attack": 20,
+        "image": "obi-wan.jpg",
+        "id": "obi-wan",
+        "side": "light",
+    };
 
-    }
+    var maceWindu = {
+        "name": "Mace Windu",
+        "health": 125,
+        "attack": 20,
+        "image": "mace-windu.jpg",
+        "id": "mace-windu",
+        "side": "light",
+    };
 
-    var characterChosen = false
+    var yoda = {
+        "name": "Yoda",
+        "health": 125,
+        "attack": 20,
+        "image": "yoda.jpg",
+        "id": "yoda",
+        "side": "light",
+    };
 
-    $.each(characters, function () {
-        $.each(this, function (key, value) {
-            console.log(key + ": " + value)
+    var anakin = {
+        "name": "Anakin",
+        "health": 125,
+        "attack": 20,
+        "image": "anakin.jpg",
+        "id": "anakin",
+        "side": "dark",
+    };
 
-        });
+    var dooku = {
+        "name": "Dooku",
+        "health": 125,
+        "attack": 20,
+        "image": "dooku.jpg",
+        "id": "dooku",
+        "side": "dark",
+    };
+
+    var palpatine = {
+        "name": "Palpatine",
+        "health": 125,
+        "attack": 20,
+        "image": "palpatine.png",
+        "id": "palpatine",
+        "side": "dark",
+    };
+
+    var characters = [obiWan, maceWindu, yoda, anakin, dooku, palpatine];
+
+    var characterChosen = false;
+
+    for (i = 0; i < characters.length; i++) {
 
         var characterButton = $("<div>");
-        var characterImage = $('<img src="assets/images/' + this.image + '">')
+        var characterImage = $('<img src="assets/images/' + characters[i].image + '">')
         characterImage.addClass("image");
         characterButton.addClass("card col-3");
-        characterButton.text(this.name);
+        characterButton.text(characters[i].name);
         characterButton.append(characterImage);
+        characterButton.data("character", characters[i]);
         $(".character-buttons").append(characterButton);
+    };
 
-         
+    $(".character-buttons").on("click", ".card", function () {
 
-        $(".card").on("click", ".image", function () {
-            console.log("hello there");
-    
-            $(".character-selection").addClass("hidden");
-    
-            var characterLobby = $(".character-lobby");
-            characterLobby.removeClass("hidden");
-    
-            $(".your-character").append(characterButton);
-    
-    
-        });
-    
-
-    });
-
-
-    $(".card").on("click", ".image", function () {
         console.log("hello there");
+        console.log($(this).data("character"));
+        console.log($(this).data("character").health);
+
 
         $(".character-selection").addClass("hidden");
-
-        var characterLobby = $(".character-lobby");
-        characterLobby.removeClass("hidden");
-
-        $(".your-character").append(characterButton);
+        $(".character-lobby").removeClass("hidden");
+        $(".your-character").append(this);
 
 
     });
-
-
 
 
 
