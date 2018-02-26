@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     var obiWan = {
         "name": "Obi Wan Kenobi",
-        "health": 150,
+        "health": 125,
         "attack": 20,
         "image": "obi-wan.jpg",
         "id": "obi-wan",
