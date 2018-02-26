@@ -5,6 +5,7 @@ $(document).ready(function () {
         "name": "Obi Wan Kenobi",
         "health": 125,
         "attack": 20,
+        "counter": 10,
         "image": "obi-wan.jpg",
         "id": "obi-wan",
         "side": "light",
@@ -14,6 +15,7 @@ $(document).ready(function () {
         "name": "Mace Windu",
         "health": 140,
         "attack": 20,
+        "counter": 10,
         "image": "mace-windu.jpg",
         "id": "mace-windu",
         "side": "light",
@@ -23,6 +25,7 @@ $(document).ready(function () {
         "name": "Yoda",
         "health": 175,
         "attack": 20,
+        "counter": 10,
         "image": "yoda.jpg",
         "id": "yoda",
         "side": "light",
@@ -32,6 +35,7 @@ $(document).ready(function () {
         "name": "Anakin",
         "health": 100,
         "attack": 20,
+        "counter": 10,
         "image": "anakin.jpg",
         "id": "anakin",
         "side": "dark",
@@ -41,6 +45,7 @@ $(document).ready(function () {
         "name": "Dooku",
         "health": 110,
         "attack": 20,
+        "counter": 10,
         "image": "dooku.jpg",
         "id": "dooku",
         "side": "dark",
@@ -50,6 +55,7 @@ $(document).ready(function () {
         "name": "Palpatine",
         "health": 195,
         "attack": 20,
+        "counter": 10,
         "image": "palpatine.png",
         "id": "palpatine",
         "side": "dark",
@@ -58,6 +64,10 @@ $(document).ready(function () {
     var characters = [obiWan, maceWindu, yoda, anakin, dooku, palpatine];
 
     var characterChosen = false;
+
+    var yourCharacter;
+
+    var opponent;
 
     for (i = 0; i < characters.length; i++) {
 
@@ -77,8 +87,9 @@ $(document).ready(function () {
         console.log($(this).data("character"));
         console.log($(this).data("character").health);
 
-        youCharacter = this;
+        yourCharacter = this;
 
+        $(this).addClass("player-character");    
         $(".character-selection").addClass("hidden");
         $(".character-lobby").removeClass("hidden");
         $(".your-character").append(this);
@@ -91,7 +102,7 @@ $(document).ready(function () {
                 var characterButton = $("<div>");
                 var characterImage = $('<img src="assets/images/' + characters[i].image + '">')
                 characterImage.addClass("image");
-                characterButton.addClass("card col-3");
+                characterButton.addClass("card col-3 opponent");
                 characterButton.text(characters[i].name);
                 characterButton.append(characterImage);
                 characterButton.data("character", characters[i]);
@@ -103,7 +114,7 @@ $(document).ready(function () {
                 var characterButton = $("<div>");
                 var characterImage = $('<img src="assets/images/' + characters[i].image + '">')
                 characterImage.addClass("image");
-                characterButton.addClass("card col-3");
+                characterButton.addClass("card col-3 opponent");
                 characterButton.text(characters[i].name);
                 characterButton.append(characterImage);
                 characterButton.data("character", characters[i]);
@@ -115,6 +126,10 @@ $(document).ready(function () {
 
             var opponent = this;
 
+            console.log("hello there");
+            console.log($(this).data("character"));
+            console.log($(this).data("character").health);
+
             $(".character-lobby").addClass("hidden");
             $(".combat-area").removeClass("hidden");
             $(".defender").append(this);
@@ -124,22 +139,20 @@ $(document).ready(function () {
             attackButton.text("attack");
             $(".combat-area").append(attackButton);
 
-            var yourHealth = $(youCharacter).data("character").health;
+            var yourHealth = $(yourCharacter).data("character").health;
             var opponentHealth = $(opponent).data("character").health;
+
+            
 
 
             $(".attack").on("click", function () {
 
 
-                console.log($(youCharacter).data("character").health);
+                opponentHealth -= $(yourCharacter).data("character").attack;
+                yourHealth -= $(opponent).data("character").attack;
+
                 console.log(yourHealth);
-                console.log($(opponent).data("character").health);
                 console.log(opponentHealth);
-
-
-                opponentHealth -= $(youCharacter).data("character").attack;
-                
-
 
             });
 
