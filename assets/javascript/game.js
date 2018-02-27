@@ -76,7 +76,7 @@ $(document).ready(function () {
         var characterHealth = $("<div>");
 
         characterImage.addClass("image");
-        characterButton.addClass("card");
+        characterButton.addClass("card unselected");
         characterHealth.addClass("player-health health")
         characterHealth.text(characters[i].health);
         characterButton.text(characters[i].name);
@@ -101,6 +101,7 @@ $(document).ready(function () {
 
 
         $(this).addClass("player-character");
+        $(this).removeClass("unselected");
 
         $(".character-selection").addClass("hidden");
         $(".character-lobby").removeClass("hidden");
@@ -116,7 +117,7 @@ $(document).ready(function () {
                 var characterHealth = $("<div>");
 
                 characterImage.addClass("image");
-                characterButton.addClass("card");
+                characterButton.addClass("card unselected");
                 characterHealth.addClass("health")
                 characterHealth.text(characters[i].health);
                 characterButton.text(characters[i].name);
@@ -139,7 +140,7 @@ $(document).ready(function () {
                 var characterHealth = $("<div>");
 
                 characterImage.addClass("image");
-                characterButton.addClass("card");
+                characterButton.addClass("card unselected");
                 characterHealth.addClass("health")
                 characterHealth.text(characters[i].health);
                 characterButton.text(characters[i].name);
@@ -166,6 +167,8 @@ $(document).ready(function () {
                 var opponent = this;
 
                 $(this).find(".health").addClass("opponent-health");
+                $(this).removeClass("unselected");
+
 
 
                 console.log("hello there");

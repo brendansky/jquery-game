@@ -34,7 +34,7 @@ body {
     width: 18rem;
 }
 
-.card:hover {
+.unselected:hover {
     border: solid 4px black;
 }
 
