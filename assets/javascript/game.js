@@ -54,7 +54,7 @@ $(document).ready(function () {
     var palpatine = {
         "name": "Palpatine",
         "health": 195,
-        "attack": 20,
+        "attack": 40,
         "counter": 10,
         "image": "palpatine.png",
         "id": "palpatine",
@@ -63,7 +63,7 @@ $(document).ready(function () {
 
     var characters = [obiWan, maceWindu, yoda, anakin, dooku, palpatine];
 
-    var characterChosen = false;
+    var enemiesRemaining = 0;
 
     var yourCharacter;
 
@@ -76,7 +76,7 @@ $(document).ready(function () {
         var characterHealth = $("<div>");
 
         characterImage.addClass("image");
-        characterButton.addClass("card col-3");
+        characterButton.addClass("card");
         characterHealth.addClass("player-health health")
         characterHealth.text(characters[i].health);
         characterButton.text(characters[i].name);
@@ -84,6 +84,7 @@ $(document).ready(function () {
         characterButton.append(characterHealth);
         characterButton.data("character", characters[i]);
         $(".character-buttons").append(characterButton);
+
     };
 
     $(".character-buttons").on("click", ".card", function () {
@@ -93,9 +94,11 @@ $(document).ready(function () {
         console.log($(this).data("character").health);
 
         yourCharacter = this;
+        var yourHealth = $(yourCharacter).data("character").health;
+
 
         $(this).addClass("player-character");
-        
+
         $(".character-selection").addClass("hidden");
         $(".character-lobby").removeClass("hidden");
         $(".your-character").append(this);
@@ -110,14 +113,19 @@ $(document).ready(function () {
                 var characterHealth = $("<div>");
 
                 characterImage.addClass("image");
-                characterButton.addClass("card col-3 opponent");
-                characterHealth.addClass("opponent-health health")
+                characterButton.addClass("card");
+                characterHealth.addClass("health")
                 characterHealth.text(characters[i].health);
                 characterButton.text(characters[i].name);
                 characterButton.append(characterImage);
                 characterButton.append(characterHealth);
                 characterButton.data("character", characters[i]);
                 $(".enemies-remaining").append(characterButton);
+
+
+                enemiesRemaining ++;
+                console.log(enemiesRemaining);
+
 
             };
         } else {
@@ -128,8 +136,8 @@ $(document).ready(function () {
                 var characterHealth = $("<div>");
 
                 characterImage.addClass("image");
-                characterButton.addClass("card col-3 opponent");
-                characterHealth.addClass("opponent-health health")
+                characterButton.addClass("card");
+                characterHealth.addClass("health")
                 characterHealth.text(characters[i].health);
                 characterButton.text(characters[i].name);
                 characterButton.append(characterImage);
@@ -137,54 +145,93 @@ $(document).ready(function () {
                 characterButton.data("character", characters[i]);
                 $(".enemies-remaining").append(characterButton);
 
+
+                enemiesRemaining ++;
+                console.log(enemiesRemaining);
+
+
             };
         }
 
         $(".enemies-remaining").on("click", ".card", function () {
 
-            var opponent = this;
+            if ($(this).hasClass("defeated")) {
+                alert("defeated!");
 
-            console.log("hello there");
-            console.log($(this).data("character"));
-            console.log($(this).data("character").health);
+            } else {
 
-            $(".character-lobby").addClass("hidden");
-            $(".combat-area").removeClass("hidden");
-            $(".defender").append(this);
+                var opponent = this;
 
-            var attackButton = $("<button>");
-            attackButton.addClass("attack");
-            attackButton.text("attack");
-            $(".combat-area").append(attackButton);
-
-            var yourHealth = $(yourCharacter).data("character").health;
-            var opponentHealth = $(opponent).data("character").health;
+                $(this).find(".health").addClass("opponent-health");
 
 
+                console.log("hello there");
+                console.log($(this).data("character"));
 
 
-            $(".attack").on("click", function () {
+                $(opponent).addClass("opponent");
+                $(".character-lobby").addClass("hidden");
+                $(".combat-area").removeClass("hidden");
+                $(".defender").append(this);
+
+                var attackButton = $("<button>");
+                attackButton.addClass("attack");
+                attackButton.text("attack");
+                $(".combat-button").html(attackButton);
+
+                var opponentHealth = $(opponent).data("character").health;
 
 
-                opponentHealth -= $(yourCharacter).data("character").attack;
-                yourHealth -= $(opponent).data("character").counter;
+                $(".attack").on("click", function () {
 
-                console.log(yourHealth);
-                $(".player-health").text(yourHealth);
-                console.log(opponentHealth);
-                $(".opponent-health").text(opponentHealth);
+                    opponentHealth -= $(yourCharacter).data("character").attack;
+                    yourHealth -= $(opponent).data("character").counter;
 
-            });
+                    console.log(yourHealth);
+                    $(".player-health").text(yourHealth);
+                    console.log(opponentHealth);
+                    $(".opponent-health").text(opponentHealth);
 
+                    if (yourHealth <= 0) {
+                        var defeatAlert = $("<div>");
+                        defeatAlert.addClass("alert alert-primary");
+                        defeatAlert.html("<h2>you lose!<h2><a href='index.html'><h2>play again?<h2></a>");
+                        $("body").append(defeatAlert);
 
+                    }
+
+                    else if (opponentHealth <= 0) {
+
+                        console.log(opponent);
+
+                        $(".character-lobby").removeClass("hidden");
+                        $(".combat-area").addClass("hidden");
+
+                        $(".opponent-health").text("Defeated!");
+                        $(".opponent-health").removeClass("opponent-health");
+                        $(".opponent").addClass("defeated");
+                        $(".enemies-remaining").append(opponent);
+
+                        enemiesRemaining -= 1 ;
+
+                        if ( enemiesRemaining === 0) {
+
+                            console.log(enemiesRemaining);
+                            var victoryAlert = $("<div>");
+                            victoryAlert.addClass("alert alert-primary");
+                            victoryAlert.html("<h2>you are victorious!<h2><a href='index.html'><h2>play again?<h2></a>");
+                            $("body").append(victoryAlert);
+    
+                        }
+
+                    };
+
+                });
+
+            };
 
         })
 
-
-
-
     });
-
-
 
 });

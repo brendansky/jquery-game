@@ -1,5 +1,6 @@
 body{
     border: solid 1px black;
+    margin-bottom: 20px;
 
 }
 .container{
@@ -16,6 +17,7 @@ body{
 }
 .health{
     color: green;
+
 }
 .image{
     max-height: 17rem;
@@ -23,6 +25,26 @@ body{
     overflow: hidden;
 }
 
+.defeated{
+    border: solid 4px gray;
+    opacity: .50;
+}
 .hidden{
     display: none;
+}
+
+.alert{
+    border: 1px solid black;
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, .60);
+    color: white;
+    padding: 60px 300px 60px 300px;
+    position: fixed;
+    top: 35%;
+    left: 25%;    
+}
+
+a:link{
+    text-decoration: none;
+    color: white;
 }
