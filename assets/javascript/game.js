@@ -3,9 +3,9 @@ $(document).ready(function () {
 
     var obiWan = {
         "name": "Obi Wan Kenobi",
-        "health": 125,
-        "attack": 20,
-        "counter": 10,
+        "health": 180,
+        "attack": 36,
+        "counter": 21,
         "image": "obi-wan.jpg",
         "id": "obi-wan",
         "side": "light",
@@ -13,9 +13,9 @@ $(document).ready(function () {
 
     var maceWindu = {
         "name": "Mace Windu",
-        "health": 140,
-        "attack": 20,
-        "counter": 10,
+        "health": 155,
+        "attack": 57,
+        "counter": 14,
         "image": "mace-windu.jpg",
         "id": "mace-windu",
         "side": "light",
@@ -23,28 +23,28 @@ $(document).ready(function () {
 
     var yoda = {
         "name": "Yoda",
-        "health": 175,
-        "attack": 20,
-        "counter": 10,
+        "health": 205,
+        "attack": 18,
+        "counter": 11,
         "image": "yoda.jpg",
         "id": "yoda",
         "side": "light",
     };
 
     var anakin = {
-        "name": "Anakin",
-        "health": 100,
-        "attack": 20,
-        "counter": 10,
+        "name": "Anakin Skywalker",
+        "health": 130,
+        "attack": 66,
+        "counter": 33,
         "image": "anakin.jpg",
         "id": "anakin",
         "side": "dark",
     };
 
     var dooku = {
-        "name": "Dooku",
-        "health": 110,
-        "attack": 20,
+        "name": "Count Dooku",
+        "health": 150,
+        "attack": 30,
         "counter": 10,
         "image": "dooku.jpg",
         "id": "dooku",
@@ -53,9 +53,9 @@ $(document).ready(function () {
 
     var palpatine = {
         "name": "Palpatine",
-        "health": 195,
-        "attack": 40,
-        "counter": 10,
+        "health": 199,
+        "attack": 17,
+        "counter": 16,
         "image": "palpatine.png",
         "id": "palpatine",
         "side": "dark",
@@ -94,7 +94,10 @@ $(document).ready(function () {
         console.log($(this).data("character").health);
 
         yourCharacter = this;
+
         var yourHealth = $(yourCharacter).data("character").health;
+        var attackPower = $(yourCharacter).data("character").attack;
+
 
 
         $(this).addClass("player-character");
@@ -175,17 +178,33 @@ $(document).ready(function () {
                 $(".defender").append(this);
 
                 var attackButton = $("<button>");
-                attackButton.addClass("attack");
-                attackButton.text("attack");
+                attackButton.addClass("attack button");
+                attackButton.text("Attack!");
                 $(".combat-button").html(attackButton);
+
+                var attackInformation = $("<div>");
+                attackInformation.addClass("information hidden")
+                attackInformation.text("");
+                $(".combat-button").append(attackInformation);
+
+
 
                 var opponentHealth = $(opponent).data("character").health;
 
 
                 $(".attack").on("click", function () {
 
-                    opponentHealth -= $(yourCharacter).data("character").attack;
-                    yourHealth -= $(opponent).data("character").counter;
+                    var yourDamage = (Math.floor(Math.random() * 10)) + attackPower;
+                    var opponentDamage = (Math.floor(Math.random() * 10)) + $(opponent).data("character").counter;
+
+                    opponentHealth -= yourDamage;
+                    yourHealth -= opponentDamage;
+
+                    attackPower += 5 + (Math.floor(Math.random() * 13))
+
+
+                    $(".information").removeClass("hidden")
+                    $(".information").text("You attacked " + $(opponent).data("character").name + " for " + yourDamage + " damage!");
 
                     console.log(yourHealth);
                     $(".player-health").text(yourHealth);
@@ -217,6 +236,8 @@ $(document).ready(function () {
                         if ( enemiesRemaining === 0) {
 
                             console.log(enemiesRemaining);
+                            $("#challenge").text("All enemies have been defeated");
+
                             var victoryAlert = $("<div>");
                             victoryAlert.addClass("alert alert-primary");
                             victoryAlert.html("<h2>you are victorious!<h2><a href='index.html'><h2>play again?<h2></a>");
