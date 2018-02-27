@@ -73,10 +73,15 @@ $(document).ready(function () {
 
         var characterButton = $("<div>");
         var characterImage = $('<img src="assets/images/' + characters[i].image + '">')
+        var characterHealth = $("<div>");
+
         characterImage.addClass("image");
         characterButton.addClass("card col-3");
+        characterHealth.addClass("player-health health")
+        characterHealth.text(characters[i].health);
         characterButton.text(characters[i].name);
         characterButton.append(characterImage);
+        characterButton.append(characterHealth);
         characterButton.data("character", characters[i]);
         $(".character-buttons").append(characterButton);
     };
@@ -89,7 +94,8 @@ $(document).ready(function () {
 
         yourCharacter = this;
 
-        $(this).addClass("player-character");    
+        $(this).addClass("player-character");
+        
         $(".character-selection").addClass("hidden");
         $(".character-lobby").removeClass("hidden");
         $(".your-character").append(this);
@@ -101,24 +107,36 @@ $(document).ready(function () {
 
                 var characterButton = $("<div>");
                 var characterImage = $('<img src="assets/images/' + characters[i].image + '">')
+                var characterHealth = $("<div>");
+
                 characterImage.addClass("image");
                 characterButton.addClass("card col-3 opponent");
+                characterHealth.addClass("opponent-health health")
+                characterHealth.text(characters[i].health);
                 characterButton.text(characters[i].name);
                 characterButton.append(characterImage);
+                characterButton.append(characterHealth);
                 characterButton.data("character", characters[i]);
                 $(".enemies-remaining").append(characterButton);
+
             };
         } else {
             for (i = 0; i < 3; i++) {
 
                 var characterButton = $("<div>");
                 var characterImage = $('<img src="assets/images/' + characters[i].image + '">')
+                var characterHealth = $("<div>");
+
                 characterImage.addClass("image");
                 characterButton.addClass("card col-3 opponent");
+                characterHealth.addClass("opponent-health health")
+                characterHealth.text(characters[i].health);
                 characterButton.text(characters[i].name);
                 characterButton.append(characterImage);
+                characterButton.append(characterHealth);
                 characterButton.data("character", characters[i]);
                 $(".enemies-remaining").append(characterButton);
+
             };
         }
 
@@ -142,17 +160,19 @@ $(document).ready(function () {
             var yourHealth = $(yourCharacter).data("character").health;
             var opponentHealth = $(opponent).data("character").health;
 
-            
+
 
 
             $(".attack").on("click", function () {
 
 
                 opponentHealth -= $(yourCharacter).data("character").attack;
-                yourHealth -= $(opponent).data("character").attack;
+                yourHealth -= $(opponent).data("character").counter;
 
                 console.log(yourHealth);
+                $(".player-health").text(yourHealth);
                 console.log(opponentHealth);
+                $(".opponent-health").text(opponentHealth);
 
             });
 

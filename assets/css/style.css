@@ -11,8 +11,11 @@ body{
     border: solid 2px purple;
     font-size: 24px;
     margin: 20px;
-    height: 12rem;
+    height: 16rem;
     width: 18rem;
+}
+.health{
+    color: green;
 }
 .image{
     max-height: 17rem;
